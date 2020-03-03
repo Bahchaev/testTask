@@ -1,15 +1,40 @@
 .tableHeader {
-    background-color: antiquewhite;
+    background-color: lightgrey;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+    height: 35px;
+    text-align: center;
+    vertical-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
 }
 
 .textColl {
     width: 30%;
+    height: 35px;
+    vertical-align: center;
+    text-align: center;
 }
 
 .usersListTable {
     width: 800px;
+    border-collapse: collapse;
 }
 
 .buttonsColl {
-
+    text-align: right;
 }
+
+.imageColl {
+    width: 35px;
+}
+
+.tableContent .imageColl {
+    /*тут болжна быть картинка*/
+    background-color: white;
+}
+
+.tableContent {
+    border-bottom: 1px solid gray;
+}
+

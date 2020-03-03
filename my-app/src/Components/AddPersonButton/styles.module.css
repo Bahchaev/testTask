@@ -1,0 +1,11 @@
+.AddPersonButton {
+    display: block;
+    text-align: center;
+    background-color: dodgerblue;
+    color: white;
+    font-size: 14px;
+    height: 35px;
+    border-radius: 10px;
+    border-width: 0;
+}
+
