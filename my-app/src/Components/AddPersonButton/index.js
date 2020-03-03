@@ -3,7 +3,7 @@ import styles from "./styles.module.css"
 
 function AddPersonButton() {
     return(
-        <button className={styles.AddPersonButton}>Добавить сотрудника</button>
+        <button className={styles.AddPersonButton} onClick='location.href="../../../public/addPersonPage.html'>Добавить сотрудника</button>
     )
 }
 

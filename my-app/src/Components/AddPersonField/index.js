@@ -6,7 +6,7 @@ function AddPersonField() {
         <div className={styles.Field}>
             <h1>Создание сотрудника</h1>
             <div className={styles.InputField}>
-                <p>Назад к списку</p>
+                <a href="../../../public/index.html" className={styles.BackToMainLink}>Назад к списку</a>
                 <input className={styles.Input} type="text" placeholder="Введите имя сотрудника"/><br/>
                 <input className={styles.Input} type="text" placeholder="Введите фамилию сотрудника"/>
                 <button className={styles.SaveButton}>Сохранить</button>
