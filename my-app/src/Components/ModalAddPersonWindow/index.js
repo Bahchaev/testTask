@@ -6,7 +6,9 @@ function ModalAddPersonWindow() {
 
     const [modalOpen, setModalOpen] = useState(false);
 
-    const handleOpen = () => setModalOpen(true);
+    const handleOpen = () => {
+        setModalOpen(true);
+    };
     const handleClose = () => setModalOpen(false);
 
     const saveButtonClick = () => {
@@ -19,8 +21,6 @@ function ModalAddPersonWindow() {
                className={styles.ModalWindowField}
                open={modalOpen}
                onClose={handleClose}
-               basic
-               size={"small"}
         >
             <h1>Создание сотрудника</h1>
 
