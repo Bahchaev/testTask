@@ -1,18 +1,41 @@
-.Field {
+.ModalWindowField {
     width: 400px;
-    border: 1px solid gray;
+    max-width: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.AddPersonButton {
+    display: block;
+    text-align: center;
+    background-color: dodgerblue;
+    color: white;
+    font-size: 14px;
+    height: 35px;
     border-radius: 10px;
+    border-width: 0;
+}
+
+.ContentField {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid gray;
 }
 
 h1 {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     background-color: gray;
     color: white;
     height: 20px;
     text-align: left;
+    padding-left: 10px;
     vertical-align: center;
     font-size: 15px;
     font-weight: normal;
-    margin-top: 0;
+    margin: 0;
 }
 
 .InputField {
@@ -34,6 +57,7 @@ h1 {
 }
 
 .SaveButton {
+    cursor: pointer;
     margin-left: auto;
     margin-bottom: 10px;
     display: block;
@@ -47,8 +71,13 @@ h1 {
     border-width: 0;
 }
 
+.SaveButton:hover {
+    background-color: deepskyblue;
+}
+
 .BackToMainLink {
     display: block;
     font-size: 12px;
     margin-bottom: 10px;
+    margin-top: 5px
 }

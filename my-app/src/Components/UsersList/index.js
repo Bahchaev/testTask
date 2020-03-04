@@ -8,10 +8,10 @@ function UsersList() {
     return (
         <table className={styles.usersListTable}>
             <tr className={styles.tableHeader}>
-                <td className={styles.imageColl}></td>
+                <td className={styles.imageColl}/>
                 <td className={styles.textColl}>Имя</td>
                 <td className={styles.textColl}>Фамилия</td>
-                <td className={styles.buttonsColl}></td>
+                <td className={styles.buttonsColl}/>
             </tr>
 
             {Array.from(PersonList.values()).map((element) =>

@@ -1,15 +1,15 @@
 import React from 'react';
-import styles from "./App.css"
+import styles from "./styles.module.css"
 import UsersList from "./Components/UsersList";
-import AddPersonButton from "./Components/AddPersonButton";
-import AddPersonField from "./Components/AddPersonField";
+
+import ModalAddPersonWindow from "./Components/ModalAddPersonWindow";
 
 function App() {
   return (
-    <div className={styles.tablePageContent}>
+    <div className={styles.TablePageContent}>
       <UsersList/>
-      <AddPersonButton/>
-      <AddPersonField/>
+      <br/>
+      <ModalAddPersonWindow/>
     </div>
   );
 }
