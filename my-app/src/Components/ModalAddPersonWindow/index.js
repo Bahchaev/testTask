@@ -9,6 +9,7 @@ function ModalAddPersonWindow() {
     const handleOpen = () => {
         setModalOpen(true);
     };
+
     const handleClose = () => setModalOpen(false);
 
     const saveButtonClick = () => {
@@ -17,24 +18,26 @@ function ModalAddPersonWindow() {
     };
 
     return (
-        <Modal trigger={<button className={styles.AddPersonButton} onClick={handleOpen}>Добавить сотрудника</button>}
-               className={styles.ModalWindowField}
-               open={modalOpen}
-               onClose={handleClose}
+
+        <Modal
+            trigger={<button className={styles.AddPersonButton} onClick={handleOpen}>Добавить сотрудника</button>}
+            open={modalOpen}
+            onClose={handleClose}
         >
-            <h1>Создание сотрудника</h1>
+                <div className={styles.ModalWindowField}>
+                    <h1>Создание сотрудника</h1>
 
-            <Modal.Content>
-                <div className={styles.ContentField}>
-                    <div className={styles.InputField}>
-                        <a href="" className={styles.BackToMainLink} onClick={handleClose}>Назад к списку</a>
-                        <input className={styles.Input} type="text" placeholder="Введите имя сотрудника"/><br/>
-                        <input className={styles.Input} type="text" placeholder="Введите фамилию сотрудника"/>
-                        <Button className={styles.SaveButton} onClick={saveButtonClick}>Сохранить</Button>
-                    </div>
+                    <Modal.Content>
+                        <div className={styles.ContentField}>
+                            <div className={styles.InputField}>
+                                <a href="" className={styles.BackToMainLink} onClick={handleClose}>Назад к списку</a>
+                                <input className={styles.Input} type="text" placeholder="Введите имя сотрудника"/><br/>
+                                <input className={styles.Input} type="text" placeholder="Введите фамилию сотрудника"/>
+                                <Button className={styles.SaveButton} onClick={saveButtonClick}>Сохранить</Button>
+                            </div>
+                        </div>
+                    </Modal.Content>
                 </div>
-            </Modal.Content>
-
         </Modal>
     )
 }
