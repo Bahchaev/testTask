@@ -1,16 +1,7 @@
-.tableHeader {
-    background-color: antiquewhite;
+.DeleteButton {
+    background-image: url('./deleteButtonIMG.png');
+    background-size: 100%;
+    width: 30px;
+    height: 30px;
+    margin: 0;
 }
-
-.textColl {
-    width: 30%;
-}
-
-.usersListTable {
-    width: 800px;
-}
-
-.buttonsColl {
-
-}
-

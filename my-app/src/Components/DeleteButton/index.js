@@ -3,7 +3,7 @@ import styles from "./styles.module.css"
 
 function DeleteButton() {
     return(
-        <button>Delete</button>
+        <button className={styles.DeleteButton}/>
     )
 }
 

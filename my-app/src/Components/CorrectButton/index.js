@@ -3,7 +3,7 @@ import styles from "./styles.module.css"
 
 function CorrectButton() {
     return(
-        <button>Correct</button>
+        <button className={styles.CorrectButton}/>
     )
 }
 

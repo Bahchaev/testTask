@@ -3,6 +3,7 @@ import styles from "./styles.module.css"
 import PersonList from "../../personList";
 import CorrectButton from "../CorrectButton";
 import DeleteButton from "../DeleteButton";
+import ModalCorrectPersonWindow from "../ModalCorrectPersonWindow";
 
 function UsersList() {
     return (
@@ -19,7 +20,7 @@ function UsersList() {
                     <td className={styles.imageColl}>IMG</td>
                     <td className={styles.textColl}>{element.fistName}</td>
                     <td className={styles.textColl}>{element.lastName}</td>
-                    <td className={styles.buttonsColl}><CorrectButton/><DeleteButton/></td>
+                    <td className={styles.buttonsColl}><ModalCorrectPersonWindow/><DeleteButton/></td>
                 </tr>
             )}
         </table>
