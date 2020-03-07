@@ -1,3 +1,9 @@
+
+.usersListTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
 .tableHeader {
     background-color: lightgrey;
     border-bottom: 1px solid gray;
@@ -9,20 +15,8 @@
     font-weight: bold;
 }
 
-.textColl {
-    width: 30%;
-    height: 35px;
-    vertical-align: center;
-    text-align: center;
-}
-
-.usersListTable {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.buttonsColl {
-    text-align: right;
+.tableContent {
+    border-bottom: 1px solid gray;
 }
 
 .imageColl {
@@ -30,11 +24,23 @@
 }
 
 .tableContent .imageColl {
-    /*тут болжна быть картинка*/
-    background-color: white;
+    background-image: url('./avatar.png');
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.tableContent {
-    border-bottom: 1px solid gray;
+.textColl {
+    width: 30%;
+    height: 35px;
+    text-align: center;
 }
+
+.buttonsColl {
+    text-align: right;
+}
+
+
+
+
 
