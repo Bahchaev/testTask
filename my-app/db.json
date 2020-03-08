@@ -2,13 +2,13 @@
   "persons": [
     {
       "id": 1,
-      "fistName": "John",
+      "firstName": "John",
       "lastName": "Boo"
     },
     {
-      "id": 2,
-      "fistName": "Michael",
-      "lastName": "Robinson"
+      "firstName": "афыва",
+      "lastName": "пкпк",
+      "id": 2
     }
   ]
 }

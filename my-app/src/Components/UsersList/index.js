@@ -1,35 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./styles.module.css"
-import PersonList from "../../personList";
 import DeleteButton from "../DeleteButton";
 import ModalCorrectPersonWindow from "../ModalCorrectPersonWindow";
 
 function UsersList() {
-
-    // let requestURL = "../../../db.json";
-    // let request = new XMLHttpRequest();
-    // request.open('GET', requestURL);
-    // request.responseType = 'json';
-    // request.send();
-    // request.onload = function () {
-    //     let personsData = request.response;
-    //     createTable(personsData)
-    // };
-    //
-    // function createTable(jsonObj) {
-    //     return (
-    //         {
-    //             jsonObj['persons'].map((element) =>
-    //                 <tr className={styles.tableContent}>
-    //                     <td className={styles.imageColl}>IMG</td>
-    //                     <td className={styles.textColl}>{element.fistName}</td>
-    //                     <td className={styles.textColl}>{element.lastName}</td>
-    //                     <td className={styles.buttonsColl}><ModalCorrectPersonWindow/><DeleteButton/></td>
-    //                 </tr>
-    //             )
-    //         }
-    //     )
-    // }
 
     const [serverData, setServerData] = useState();
     const [isLoaded, setIsLoaded] = useState(false);
@@ -72,9 +46,9 @@ function UsersList() {
                     serverData.map((element) =>
                         <tr className={styles.tableContent}>
                             <td className={styles.imageColl}></td>
-                            <td className={styles.textColl}>{element.fistName}</td>
-                            <td className={styles.textColl}>{element.lastName}</td>
-                            <td className={styles.buttonsColl}><ModalCorrectPersonWindow/><DeleteButton/></td>
+                            <td className={styles.textColl} id={element.id + "_firstName"}>{element.firstName}</td>
+                            <td className={styles.textColl} id={element.id + "_secondName"}>{element.lastName}</td>
+                            <td className={styles.buttonsColl}><ModalCorrectPersonWindow id={element.id + "_correct"}/><DeleteButton id={element.id + "_delete"}/></td>
                         </tr>
                     )}
             </table>
