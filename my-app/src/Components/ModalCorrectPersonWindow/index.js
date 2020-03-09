@@ -4,11 +4,13 @@ import {Button, Header, Image, Modal} from 'semantic-ui-react'
 
 function ModalCorrectPersonWindow(props) {
 
-    const [modalOpen, setModalOpen] = useState(false);
-    const [firstName, setFirstName] = useState();
-    const [secondName, setSecondName] = useState("");
-    const [idPatch, setIdPatch] = useState()
+    const [modalOpen, setModalOpen] = useState(false); // статус модалоьного окна "закрыто/открыто"
+    const [firstName, setFirstName] = useState();   // Имя пользовател
+    const [secondName, setSecondName] = useState("");   // Фамилия пользователя
+    const [idPatch, setIdPatch] = useState();   //ID изменяемого объекта
+    const [error, setError] = useState(null); // ошибки при загрузке данных с сервера
 
+    // открытие модального окна
     const handleOpen = (event) => {
         setModalOpen(true);
         let idFull = event.target.id;
@@ -16,27 +18,48 @@ function ModalCorrectPersonWindow(props) {
         setIdPatch(id);
         setFirstName(document.getElementById(id + "_firstName").textContent);
         setSecondName(document.getElementById(id + "_secondName").textContent)
+        document.getElementById("ModalBackground").className = "styles_ModalBackground__vLQlF";
     };
 
-    const handleClose = () => setModalOpen(false);
+    // закрытие модального окна
+    const handleClose = () => {
+        setModalOpen(false);
+        document.getElementById("ModalBackground").className = "";
+    };
 
+    //отправка данных на сервер
     const handleSubmit = (event) => {
         event.preventDefault();
-        alert("Имя " + firstName + " " + secondName);
+        alert("Данные откорретированы");
         handleClose();
-        patchData(idPatch, firstName, secondName)
+        patchData(idPatch, firstName, secondName);
+        //отображение ошибки
+        if (error === 400) {
+            alert("Ошибка 400: неверный запрос")
+        } else if (error === 404) {
+            alert("Ошибка 404: сущность рне найдена в системе")
+        } else if (error === 500) {
+            alert("Ошибка 500 - серверная ошибка")
+        } else if ((error !== "200") && (error !== null)) {
+            alert("Неизвестная ошибка")
+        }
+        document.location.reload(true)
     };
 
+    // функция onChange для мгновенного измеения input.value
     const onChangeFirstName = (event) => {
         setFirstName(event.target.value)
     };
 
+    // функция onChange для мгновенного измеения input.value
     const onChangeSecondName = (event) => {
         setSecondName(event.target.value)
     };
 
+    // отправка откорректированных данных на сервер
     function patchData(id, firstName, secondName) {
 
+        // отправляемые данные
         let data = {
             "firstName": firstName,
             "lastName": secondName
@@ -50,11 +73,8 @@ function ModalCorrectPersonWindow(props) {
             body: JSON.stringify(data)
         })
             .then(response => response.json())
-            .then((personsData) => {
-                    console.log("Пользователь добавлен")
-                },
-                (error) => {
-                    console.log(error)
+            .then((error) => {
+                    setError(error)
                 }
             )
     }

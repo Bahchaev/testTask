@@ -8,10 +8,12 @@ import ModalAddPersonWindow from "./Components/ModalAddPersonWindow";
 function App() {
     return (
         <div>
-            <div className={styles.TablePageContent}>
-                <UsersList/>
-                <br/>
-                <ModalAddPersonWindow/>
+            <div id={"ModalBackground"}>
+                <div className={styles.TablePageContent}>
+                    <UsersList/>
+                    <br/>
+                    <ModalAddPersonWindow/>
+                </div>
             </div>
         </div>
     );

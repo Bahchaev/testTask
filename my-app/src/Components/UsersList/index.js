@@ -5,9 +5,9 @@ import ModalCorrectPersonWindow from "../ModalCorrectPersonWindow";
 
 function UsersList() {
 
-    const [serverData, setServerData] = useState();
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [error, setError] = useState(null);
+    const [serverData, setServerData] = useState(); // данные с сервера
+    const [isLoaded, setIsLoaded] = useState(false); // статус загрузки данных с сервера
+    const [error, setError] = useState(null); // ошибки при загрузке данных с сервера
 
     async function fetchData() {
         fetch("http://localhost:3001/persons")
@@ -25,6 +25,17 @@ function UsersList() {
 
     useEffect(() => {
             fetchData();
+
+            //отображение ошибки
+            if (error === 400) {
+                alert("Ошибка 400: неверный запрос")
+            } else if (error === 404) {
+                alert("Ошибка 404: сущность рне найдена в системе")
+            } else if (error === 500) {
+                alert("Ошибка 500 - серверная ошибка")
+            } else if ((error !== "200") && (error !== null)) {
+                alert("Неизвестная ошибка")
+            }
         }, []
     );
 
@@ -48,9 +59,11 @@ function UsersList() {
                             <td className={styles.imageColl}></td>
                             <td className={styles.textColl} id={element.id + "_firstName"}>{element.firstName}</td>
                             <td className={styles.textColl} id={element.id + "_secondName"}>{element.lastName}</td>
-                            <td className={styles.buttonsColl}><ModalCorrectPersonWindow id={element.id + "_correct"}/><DeleteButton id={element.id + "_delete"}/></td>
+                            <td className={styles.buttonsColl}><ModalCorrectPersonWindow
+                                id={element.id + "_correct"}/><DeleteButton id={element.id + "_delete"}/></td>
                         </tr>
-                    )}
+                    )
+                }
             </table>
         )
     }
