@@ -4,11 +4,6 @@
       "id": 1,
       "firstName": "John",
       "lastName": "Boo"
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "id": 2
     }
   ]
 }
