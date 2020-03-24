@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./styles.module.css"
-import {Button, Header, Image, Modal} from 'semantic-ui-react'
+import {Modal} from 'semantic-ui-react'
 
 function ModalAddPersonWindow() {
 

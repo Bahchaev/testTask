@@ -11,8 +11,6 @@ function App() {
             <div id={"ModalBackground"}>
                 <div className={styles.TablePageContent}>
                     <UsersList/>
-                    <br/>
-                    <ModalAddPersonWindow/>
                 </div>
             </div>
         </div>
