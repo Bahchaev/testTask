@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styles from "./styles.module.css"
 import {Modal} from 'semantic-ui-react'
+import {patchRequest} from "../../serverRequest";
 
 function ModalCorrectPersonWindow(props) {
 
@@ -8,56 +9,38 @@ function ModalCorrectPersonWindow(props) {
     const [firstName, setFirstName] = useState();   // Имя пользовател
     const [secondName, setSecondName] = useState("");   // Фамилия пользователя
     const [idPatch, setIdPatch] = useState();   //ID изменяемого объекта
-    const [error, setError] = useState(null); // ошибки при загрузке данных с сервера
 
-    // открытие модального окна
+
     const handleOpen = (event) => {
+        // открытие модального окна
         setModalOpen(true);
         let idFull = event.target.id;
         let id = idFull.slice(0, idFull.indexOf("_"));
         setIdPatch(id);
         setFirstName(document.getElementById(id + "_firstName").textContent);
         setSecondName(document.getElementById(id + "_secondName").textContent)
-        document.getElementById("ModalBackground").className = "styles_ModalBackground__vLQlF";
     };
-
-    // закрытие модального окна
     const handleClose = () => {
+        // закрытие модального окна
         setModalOpen(false);
-        document.getElementById("ModalBackground").className = "";
     };
-
-    //отправка данных на сервер
     const handleSubmit = (event) => {
+        //нажатие кнопки
         event.preventDefault();
-        alert("Данные откорретированы");
-        handleClose();
-        patchData(idPatch, firstName, secondName);
-        //отображение ошибки
-        if (error === 400) {
-            alert("Ошибка 400: неверный запрос")
-        } else if (error === 404) {
-            alert("Ошибка 404: сущность рне найдена в системе")
-        } else if (error === 500) {
-            alert("Ошибка 500 - серверная ошибка")
-        } else if ((error !== "200") && (error !== null)) {
-            alert("Неизвестная ошибка")
-        }
-        document.location.reload(true)
+        patchData(idPatch, firstName, secondName); //отправка данных на сервер
+        document.location.reload(true) // обновление web страницы
     };
-
-    // функция onChange для мгновенного измеения input.value
     const onChangeFirstName = (event) => {
+        // функция onChange для мгновенного измеения input.value
         setFirstName(event.target.value)
     };
-
-    // функция onChange для мгновенного измеения input.value
     const onChangeSecondName = (event) => {
+        // функция onChange для мгновенного измеения input.value
         setSecondName(event.target.value)
     };
 
-    // отправка откорректированных данных на сервер
     function patchData(id, firstName, secondName) {
+        // отправка откорректированных данных на сервер
 
         // отправляемые данные
         let data = {
@@ -65,18 +48,8 @@ function ModalCorrectPersonWindow(props) {
             "lastName": secondName
         };
 
-        fetch("http://localhost:3001/persons/" + id, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then((error) => {
-                    setError(error)
-                }
-            )
+        patchRequest("http://localhost:3001/persons/" + id, data) // PATCH-запрос
+            .then(handleClose)
     }
 
     return (
@@ -86,7 +59,6 @@ function ModalCorrectPersonWindow(props) {
                onClose={handleClose}
         >
             <h1>Редактирование сотрудника</h1>
-
             <Modal.Content>
                 <div className={styles.ContentField}>
                     <form className={styles.InputField} onSubmit={handleSubmit}>
@@ -101,7 +73,6 @@ function ModalCorrectPersonWindow(props) {
                     </form>
                 </div>
             </Modal.Content>
-
         </Modal>
     )
 }

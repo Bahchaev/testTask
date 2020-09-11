@@ -3,30 +3,10 @@ import styles from "./styles.module.css"
 import DeleteButton from "../DeleteButton";
 import ModalCorrectPersonWindow from "../ModalCorrectPersonWindow";
 import ModalAddPersonWindow from "../ModalAddPersonWindow";
+import {getRequest} from "../../serverRequest.js"
 
 
-function checkResponseStatus(response) {
-    //проверка статуса запроса
-    if (response.ok) {
-        return Promise.resolve(response)
-    } else {
-        return Promise.reject(new Error(response.statusText))
-    }
-}
 
-function getJsonObject(response) {
-    // получение JSON-объекта
-    return response.json()
-}
-
-async function fetchData() {
-    // GET-запрос
-    return (
-        fetch("http://localhost:3001/persons")
-            .then(checkResponseStatus)
-            .then(getJsonObject)
-    )
-}
 
 function UsersList() {
 
@@ -35,7 +15,7 @@ function UsersList() {
     const [error, setError] = useState(null); // ошибки при загрузке данных с сервера
 
     useEffect(() => {
-        fetchData()
+        getRequest("http://localhost:3001/persons")
             .then((fetchedData) => {
                     setServerData(fetchedData);
                     setIsLoaded(true)
@@ -43,12 +23,11 @@ function UsersList() {
             )
             .catch((error) => {
                 setError(error);
-                setIsLoaded(true);
             })
     }, []);
 
     if (error) {
-        return <div>Ошибка: {error.message}</div>
+        return <div>{error.message}</div>
     } else if (!isLoaded) {
         return <div>Загрузка...</div>
     } else {
