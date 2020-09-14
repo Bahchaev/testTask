@@ -1,7 +1,12 @@
 .DeleteButton {
     background-image: url('./deleteButtonIMG.png');
     background-size: 100%;
-    width: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    max-width: 30px;
+    width: 100%;
+
     height: 30px;
+
     margin: 0;
 }

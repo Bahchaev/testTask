@@ -5,7 +5,6 @@ import ModalCorrectPersonWindow from "../ModalCorrectPersonWindow";
 import ModalAddPersonWindow from "../ModalAddPersonWindow";
 import {getRequest} from "../../serverRequest.js"
 import {makeStyles} from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import classNames from 'classnames'; //для присваивания нескольких классов
 import avatar from './avatar.png'
@@ -13,7 +12,7 @@ import Hidden from "@material-ui/core/Hidden/Hidden";
 import Box from "@material-ui/core/Box/Box";
 
 
-function UsersList() {
+function UsersListDesctop() {
 
     const [serverData, setServerData] = useState(); // данные с сервера
     const [isLoaded, setIsLoaded] = useState(false); // статус загрузки данных с сервера
@@ -64,22 +63,22 @@ function UsersList() {
                         <Grid container
                               className={styles.tableContent}>
                             <Grid container
-                                  sm={1}
+                                  xs={12} sm={1}
                                   alignItems="center" justify="center">
                                 <img src={avatar} alt={"avatar"} className={styles.image}/>
                             </Grid>
                             <Grid container
-                                  sm
-                                  alignItems="center" justify="flex-start">
+                                  xs={12} sm
+                                  alignItems="center" justify={{xs:"center", sm:"flex-start"}}>
                                 <p id={element.id + "_firstName"}>{element.firstName}</p>
                             </Grid>
                             <Grid container
-                                  sm
+                                  xs={12} sm
                                   alignItems="center" justify="flex-start">
                                 <p id={element.id + "_secondName"}>{element.lastName}</p>
                             </Grid>
                             <Grid container
-                                  sm={2}
+                                  xs={12} sm={2}
                                   alignItems="center" justify="flex-end">
                                 <ModalCorrectPersonWindow id={element.id + "_correct"}/>
                                 <DeleteButton id={element.id + "_delete"}/>
@@ -97,4 +96,4 @@ function UsersList() {
     }
 }
 
-export default UsersList
+export default UsersListDesctop

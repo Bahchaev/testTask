@@ -1,0 +1,23 @@
+
+p {
+    margin: 0 0 0 10px;
+    font-size: 20px;
+}
+
+.tableContent {
+    border-bottom: 1px solid gray;
+}
+
+.image {
+    width: 90%;
+    margin: 5px 5px;
+}
+
+.buttonMarginTop {
+    margin-top: 20px;
+}
+
+
+
+
+

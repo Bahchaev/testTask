@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./styles.module.css"
-import UsersList from "./Components/UsersList";
+import UsersListMobile from "./Components/UsersListMobile";
 
 
 
@@ -11,7 +11,7 @@ function App() {
         <div>
             <div id={"ModalBackground"}>
                 <div className={styles.TablePageContent}>
-                    <UsersList/>
+                    <UsersListMobile/>
                 </div>
             </div>
         </div>
