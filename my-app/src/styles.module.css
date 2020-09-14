@@ -1,5 +1,5 @@
 .TablePageContent {
-    width: 800px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     position: relative;

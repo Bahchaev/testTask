@@ -4,9 +4,13 @@ import DeleteButton from "../DeleteButton";
 import ModalCorrectPersonWindow from "../ModalCorrectPersonWindow";
 import ModalAddPersonWindow from "../ModalAddPersonWindow";
 import {getRequest} from "../../serverRequest.js"
-import { Grid, Row, Col } from 'react-flexbox-grid';
-
-
+import {makeStyles} from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import classNames from 'classnames'; //для присваивания нескольких классов
+import avatar from './avatar.png'
+import Hidden from "@material-ui/core/Hidden/Hidden";
+import Box from "@material-ui/core/Box/Box";
 
 
 function UsersList() {
@@ -24,7 +28,7 @@ function UsersList() {
             )
             .catch((error) => {
                 setError(error);
-            })
+            });
     }, []);
 
     if (error) {
@@ -33,48 +37,62 @@ function UsersList() {
         return <div>Загрузка...</div>
     } else {
         return (
-            <div>
-                <table className={styles.usersListTable}>
-                    <tr className={styles.tableHeader}>
-                        <td className={styles.imageColl}/>
-                        <td className={styles.textColl}>Имя</td>
-                        <td className={styles.textColl}>Фамилия</td>
-                        <td className={styles.buttonsColl}/>
-                    </tr>
+            <Grid>
+                <Hidden xsDown>
+                    <Grid container className={styles.tableHeader}>
+                        <Grid container
+                              sm={1}
+                              alignItems="center" justify="center"/>
+                        <Grid container
+                              sm
+                              alignItems="center" justify="flex-start">
+                            <p>Имя</p>
+                        </Grid>
+                        <Grid container
+                              sm
+                              alignItems="center" justify="flex-start">
+                            <p>Фамилия</p>
+                        </Grid>
+                        <Grid container
+                              sm={2}
+                              alignItems="center" justify="flex-end"/>
+                    </Grid>
+                </Hidden>
 
-                    {
-                        serverData.map((element) =>
-                            <tr className={styles.tableContent}>
-                                <td className={styles.imageColl}/>
-                                <td className={styles.textColl} id={element.id + "_firstName"}>{element.firstName}</td>
-                                <td className={styles.textColl} id={element.id + "_secondName"}>{element.lastName}</td>
-                                <td className={styles.buttonsColl}><ModalCorrectPersonWindow
-                                    id={element.id + "_correct"}/><DeleteButton id={element.id + "_delete"}/></td>
-                            </tr>
-                        )
-                    }
-                </table>
-                <br/>
-                <ModalAddPersonWindow/>
-                <br/>
-                <Row className={styles.tableHeader}>
-                    <Col xs={2} className={styles.imageColl}/>
-                    <Col xs={4} className={styles.textColl}>Имя</Col>
-                    <Col xs={4} className={styles.textColl}>Фамилия</Col>
-                    <Col xs={2} className={styles.buttonsColl}/>
-                </Row>
                 {
                     serverData.map((element) =>
-                        <Row className={styles.tableContent}>
-                            <Col xs={2} className={styles.imageColl}/>
-                            <Col xs={4} className={styles.textColl} id={element.id + "_firstName"}>{element.firstName}</Col>
-                            <Col xs={4} className={styles.textColl} id={element.id + "_secondName"}>{element.lastName}</Col>
-                            <Col xs={2} className={styles.buttonsColl}><ModalCorrectPersonWindow
-                                id={element.id + "_correct"}/><DeleteButton id={element.id + "_delete"}/></Col>
-                        </Row>
+                        <Grid container
+                              className={styles.tableContent}>
+                            <Grid container
+                                  sm={1}
+                                  alignItems="center" justify="center">
+                                <img src={avatar} alt={"avatar"} className={styles.image}/>
+                            </Grid>
+                            <Grid container
+                                  sm
+                                  alignItems="center" justify="flex-start">
+                                <p id={element.id + "_firstName"}>{element.firstName}</p>
+                            </Grid>
+                            <Grid container
+                                  sm
+                                  alignItems="center" justify="flex-start">
+                                <p id={element.id + "_secondName"}>{element.lastName}</p>
+                            </Grid>
+                            <Grid container
+                                  sm={2}
+                                  alignItems="center" justify="flex-end">
+                                <ModalCorrectPersonWindow id={element.id + "_correct"}/>
+                                <DeleteButton id={element.id + "_delete"}/>
+                            </Grid>
+                        </Grid>
                     )
                 }
-            </div>
+                <Grid container className={styles.buttonMarginTop}>
+                    <Grid items>
+                        <ModalAddPersonWindow/>
+                    </Grid>
+                </Grid>
+            </Grid>
         )
     }
 }
