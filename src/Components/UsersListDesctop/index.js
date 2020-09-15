@@ -3,7 +3,7 @@ import styles from "./styles.module.css"
 import DeleteButton from "../DeleteButton";
 import ModalCorrectPersonWindow from "../ModalCorrectPersonWindow";
 import ModalAddPersonWindow from "../ModalAddPersonWindow";
-import {getRequest} from "../../serverRequest.js"
+import {doGetRequest} from "../../serverRequest.js"
 import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import classNames from 'classnames'; //для присваивания нескольких классов
@@ -19,7 +19,7 @@ function UsersListDesctop() {
     const [error, setError] = useState(null); // ошибки при загрузке данных с сервера
 
     useEffect(() => {
-        getRequest("http://localhost:3001/persons")
+        doGetRequest("http://localhost:3001/persons")
             .then((fetchedData) => {
                     setServerData(fetchedData);
                     setIsLoaded(true)

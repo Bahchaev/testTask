@@ -1,7 +1,7 @@
 function checkResponseStatus(response) {
     //проверка статуса запроса
-    if (response.ok) {
-        return Promise.resolve(response)
+    if (response.ok) { // если HTTP-статус в диапазоне 200-299
+        return Promise.resolve(response) //
     } else {
         return Promise.reject(new Error(`Ошибка ${response.status}: ${response.statusText}`))
     }
@@ -12,12 +12,12 @@ function getJsonObject(response) {
     return response.json()
 }
 
-async function getRequest(url) {
+async function doGetRequest(url) {
     // GET-запрос
     return (
-        fetch(url)
-            .then(checkResponseStatus)
-            .then(getJsonObject)
+        fetch(url)// отправляем запрос на сервер url и ждём ответа
+            .then(checkResponseStatus)// после получения ответа - делаем его проверку
+            .then(getJsonObject) //если проверка прошла успешно - получаем JSON-объект ответа
     )
 }
 
@@ -36,4 +36,4 @@ async function patchRequest(url, data) {
     )
 }
 
-export  {getRequest, patchRequest}
+export  {doGetRequest, patchRequest}
