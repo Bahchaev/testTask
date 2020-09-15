@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./styles.module.css"
 import {doGetRequest} from "./serverRequest";
-import UsersListMobile from "./Components/UsersListMobile";
+import UsersList from "./Components/UsersList";
 import ModalAddPersonWindow from "./Components/ModalAddPersonWindow";
 import Grid from "@material-ui/core/Grid";
 import SortToolbar from "./Components/SortToolbar";
@@ -41,7 +41,7 @@ function App() {
             <div>
                 <div id={"ModalBackground"}>
                     <div className={styles.TablePageContent}>
-                        <UsersListMobile data={data}/>
+                        <UsersList data={data}/>
                     </div>
                     <Grid container className={styles.buttonMarginTop}>
                         <ModalAddPersonWindow/>
