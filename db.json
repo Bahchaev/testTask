@@ -11,19 +11,9 @@
       "id": 4
     },
     {
-      "firstName": "Фёдор ",
+      "firstName": "Фёдор",
       "lastName": "Достоевский",
       "id": 5
-    },
-    {
-      "firstName": "Кузьма",
-      "lastName": "Петров",
-      "id": 6
-    },
-    {
-      "firstName": "фыва",
-      "lastName": "фыва",
-      "id": 8
     }
   ]
 }

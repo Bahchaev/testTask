@@ -12,7 +12,7 @@ function App() {
     //состояния приложения
     const [data, setData] = useState(null); //данные, полученные с сервера
     const [searchData, setSearchData] = useState(null);
-    const [term, setTerm] = useState("");   // поисковый запрос
+    const [sortData, setSortData] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false); // статус загрузки данных с сервера
     const [error, setError] = useState(null); // ошибки при загрузке данных с сервера
 
@@ -20,8 +20,10 @@ function App() {
         doGetRequest("http://localhost:3001/persons")
             .then((fetchedData) => {
                     setSearchData(fetchedData);
+                    setSortData(fetchedData);
                     setData(fetchedData);
-                    setIsLoaded(true)
+                    setIsLoaded(true);
+
                 }
             )
             .catch((error) => {
@@ -45,10 +47,10 @@ function App() {
                         <ModalAddPersonWindow/>
                     </Grid>
                     <Grid container className={styles.buttonMarginTop}>
-                        <SortToolbar/>
+                        <SortToolbar sortData={sortData} setData={setData}/>
                     </Grid>
                     <Grid container className={styles.buttonMarginTop}>
-                        <SearchBar searchData={searchData} term={term} setData={setData} setTerm={setTerm}/>
+                        <SearchBar searchData={searchData} setData={setData}/>
                     </Grid>
                 </div>
             </div>
