@@ -1,0 +1,16 @@
+.paginatorToolbarContent {
+    padding: 5px 0;
+}
+
+.pageSelectionToolbar,
+.pageLimitToolbar {
+    padding: 5px 0;
+}
+
+.page {
+    margin: 0 3px;
+}
+
+.select {
+    margin-left: 3px;
+}

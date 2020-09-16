@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import styles from "./styles.module.css"
 import {Modal} from 'semantic-ui-react'
 import {patchRequest} from "../../serverRequest";
+import Grid from "@material-ui/core/Grid";
 
-function ModalCorrectPersonWindow(props) {
+function ModalCorrectPersonWindow({id, setDbUpdateTime}) {
 
     const [modalOpen, setModalOpen] = useState(false); // статус модалоьного окна "закрыто/открыто"
     const [firstName, setFirstName] = useState();   // Имя пользовател
@@ -28,7 +29,7 @@ function ModalCorrectPersonWindow(props) {
         //нажатие кнопки
         event.preventDefault();
         patchData(idPatch, firstName, secondName); //отправка данных на сервер
-        document.location.reload(true) // обновление web страницы
+        setDbUpdateTime(Date.now())
     };
     const onChangeFirstName = (event) => {
         // функция onChange для мгновенного измеения input.value
@@ -53,28 +54,38 @@ function ModalCorrectPersonWindow(props) {
     }
 
     return (
-        <Modal trigger={<button className={styles.CorrectButton} id={props.id + "_button"} onClick={handleOpen}/>}
-               className={styles.ModalWindowField}
+        <Modal trigger={<button className={styles.CorrectButton} id={id + "_button"} onClick={handleOpen}/>}
                open={modalOpen}
                onClose={handleClose}
         >
-            <h1>Редактирование сотрудника</h1>
-            <Modal.Content>
-                <div className={styles.ContentField}>
-                    <form className={styles.InputField} onSubmit={handleSubmit}>
-                        <a href="" className={styles.BackToMainLink} onClick={handleClose}>Назад к списку</a>
-                        <input name={"firstName"} value={firstName} onChange={onChangeFirstName}
-                               className={styles.InputFistName} type="text"
-                               placeholder="Введите имя сотрудника"/><br/>
-                        <input name={"secondName"} value={secondName} onChange={onChangeSecondName}
-                               className={styles.InputSecondName} type="text"
-                               placeholder="Введите фамилию сотрудника"/>
-                        <input type={"submit"} className={styles.SaveButton} value={"Сохранить"}/>
-                    </form>
-                </div>
-            </Modal.Content>
+            <div className={styles.ModalBackground}/>
+            <div className={styles.ModalWindowField}>
+                <h1>Редактирование сотрудника</h1>
+
+                <Modal.Content>
+                    <div className={styles.ContentField}>
+                        <form className={styles.InputField} onSubmit={handleSubmit}>
+                            <a href="" className={styles.BackToMainLink} onClick={handleClose}>Назад к списку</a>
+                            <input name={"firstName"} value={firstName} onChange={onChangeFirstName}
+                                   className={styles.InputFistName} type="text"
+                                   placeholder="Введите имя сотрудника"/><br/>
+                            <input name={"secondName"} value={secondName} onChange={onChangeSecondName}
+                                   className={styles.InputSecondName} type="text"
+                                   placeholder="Введите фамилию сотрудника"/>
+                            <Grid container justify={"space-around"}>
+                                <Grid items>
+                                    <input type={"submit"} className={styles.SaveButton} value={"Сохранить"}/>
+                                </Grid>
+                                <Grid items>
+                                    <button className={styles.SaveButton} onClick={handleClose}>Отмена</button>
+                                </Grid>
+                            </Grid>
+                        </form>
+                    </div>
+                </Modal.Content>
+            </div>
         </Modal>
-    )
+)
 }
 
 export default ModalCorrectPersonWindow

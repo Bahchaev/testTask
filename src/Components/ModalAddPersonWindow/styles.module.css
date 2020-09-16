@@ -1,3 +1,14 @@
+.ModalBackground {
+    z-index: 19;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 0.7;
+}
+
 .ModalWindowField {
     background-color: white;
     width: 400px;

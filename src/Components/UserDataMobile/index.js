@@ -5,7 +5,7 @@ import ModalCorrectPersonWindow from "../ModalCorrectPersonWindow";
 import Grid from '@material-ui/core/Grid';
 import avatar from './avatar.png'
 
-function UserDataMobile({user}) {
+function UserDataMobile({user, setDbUpdateTime}) {
     // data — объект, содержащий информацию об одном пользователе,
     // update — функция, написанная нами ранее в компоненте <App />, отвечающая за обновление состояния компонента-начальника,
     // index — номер пользователя в общей таблице данных
@@ -35,10 +35,11 @@ function UserDataMobile({user}) {
                 </Grid>
             </Grid>
             <Grid container
-                  xs={2}
-                  alignItems="center" justify="space-between">
-                <ModalCorrectPersonWindow id={user.id + "_correct"}/>
-                <DeleteButton id={user.id + "_delete"}/>
+                  xs={1}
+                  direction={"column"}
+                  alignItems="center" justify="space-around">
+                <ModalCorrectPersonWindow id={user.id + "_correct"} setDbUpdateTime={setDbUpdateTime}/>
+                <DeleteButton id={user.id + "_delete"} setDbUpdateTime={setDbUpdateTime}/>
             </Grid>
         </Grid>
     );

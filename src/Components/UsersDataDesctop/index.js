@@ -1,19 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import styles from "./styles.module.css"
 import DeleteButton from "../DeleteButton";
 import ModalCorrectPersonWindow from "../ModalCorrectPersonWindow";
-import ModalAddPersonWindow from "../ModalAddPersonWindow";
-import {doGetRequest} from "../../serverRequest.js"
 import Grid from '@material-ui/core/Grid';
 import avatar from './avatar.png'
-import Hidden from "@material-ui/core/Hidden/Hidden";
-import Box from "@material-ui/core/Box/Box";
 
 
-function UsersDataDesktop({user}) {
-    // data — объект, содержащий информацию об одном пользователе,
-    // update — функция, написанная нами ранее в компоненте <App />, отвечающая за обновление состояния компонента-начальника,
-    // index — номер пользователя в общей таблице данных
+function UsersDataDesktop({user, setDbUpdateTime}) {
     return (
         <Grid container
               className={styles.tableContent}>
@@ -35,8 +28,8 @@ function UsersDataDesktop({user}) {
             <Grid container
                   xs={2}
                   alignItems="center" justify="flex-end">
-                <ModalCorrectPersonWindow id={user.id + "_correct"}/>
-                <DeleteButton id={user.id + "_delete"}/>
+                <ModalCorrectPersonWindow id={user.id + "_correct"} setDbUpdateTime={setDbUpdateTime}/>
+                <DeleteButton id={user.id + "_delete"} setDbUpdateTime={setDbUpdateTime}/>
             </Grid>
         </Grid>
     );

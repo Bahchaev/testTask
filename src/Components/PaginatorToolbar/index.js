@@ -1,33 +1,50 @@
 import React, {useState} from 'react';
+import styles from "./styles.module.css"
+import Grid from "@material-ui/core/Grid";
 
 function PaginatorToolbar({page, setPage, setLimit, lastPage}) {
 
     const handleFirstPage = () => setPage(1);
     const handleLeftPage = () => {
-        if (page>1) {setPage(page - 1);}
+        if (page > 1) {
+            setPage(page - 1);
+        }
     };
     const handleRightPage = () => {
-        if(page<lastPage) {setPage(page + 1)}
+        if (page < lastPage) {
+            setPage(page + 1)
+        }
     };
     const handleLastPage = () => setPage(lastPage);
     const handleLimit = (e) => setLimit(e.target.value);
 
-    return (
-        <div>
-            <button onClick={handleFirstPage}>Первая</button>
-            <button onClick={handleLeftPage}>Предыдущая</button>
-             страница {page} из {lastPage}
-            <button onClick={handleRightPage}>Следующая</button>
-            <button onClick={handleLastPage}>Последняя</button>
-            <br/>
+    if (page > lastPage) {
+        setPage(lastPage)
+    }
 
-            Отображать по
-            <select onChange={handleLimit}>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+    if (page <= 0) {
+        setPage(1)
+    }
+
+    return (
+        <Grid container className={styles.paginatorToolbarContent}>
+            <Grid item xs={12} className={styles.pageSelectionToolbar}>
+                <button onClick={handleFirstPage}>&lt;&lt;</button>
+                <button onClick={handleLeftPage}>&lt;</button>
+                <span className={styles.page}>страница {page} из {lastPage}</span>
+                <button onClick={handleRightPage}>&gt;</button>
+                <button onClick={handleLastPage}>&gt;&gt;</button>
+            </Grid>
+
+            <Grid item xs={12} className={styles.pageLimitToolbar}>
+            <span>Отображать по</span>
+            <select onChange={handleLimit} className={styles.select}>
+                <option>5</option>
+                <option>10</option>
+                <option>20</option>
             </select>
-        </div>
+            </Grid>
+        </Grid>
     )
 }
 

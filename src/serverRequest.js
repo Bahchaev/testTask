@@ -36,4 +36,38 @@ async function patchRequest(url, data) {
     )
 }
 
-export  {doGetRequest, patchRequest}
+async function postRequest(url, firstName, secondName) {
+    // POST-запрос
+
+    let data = {
+        "firstName": firstName,
+        "lastName": secondName
+    };
+
+    return (
+        fetch(url, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(checkResponseStatus)
+            .then(getJsonObject)
+    )
+}
+
+async function doDeleteRequest(url, item) {
+    // DELETE-запрос
+    return (
+        fetch(url + '/' + item, {
+            method: 'DELETE'
+        })
+            .then(checkResponseStatus)
+            .then(getJsonObject)
+    )
+}
+
+
+
+export {doGetRequest, patchRequest, doDeleteRequest, postRequest}

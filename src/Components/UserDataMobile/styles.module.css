@@ -9,13 +9,10 @@ p {
 }
 
 .image {
-    width: 90%;
+    max-height: 50px;
     margin: 5px 5px;
 }
 
-.buttonMarginTop {
-    margin-top: 20px;
-}
 
 
 

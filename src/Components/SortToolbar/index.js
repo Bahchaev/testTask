@@ -2,8 +2,6 @@ import React from 'react';
 
 function SortToolbar({sortData, setData}) {
 
-   let sorted = { firstName: true, lastName: true };
-
 const sort = (type) => {
     const sorted = [].slice.call(sortData).sort((a, b) => {
         // чтобы сортировка всегда была одинаковой учтём все условия

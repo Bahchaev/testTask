@@ -1,0 +1,24 @@
+
+.tableHeader {
+    background-color: lightgrey;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+    min-height: 35px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.tableContent {
+    border-bottom: 1px solid gray;
+    min-height: 50px;
+}
+
+.image {
+    max-height: 35px;
+    margin: 3px 0;
+}
+
+
+
+
+
