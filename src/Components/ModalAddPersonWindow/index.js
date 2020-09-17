@@ -27,7 +27,9 @@ function ModalAddPersonWindow({setDbUpdateTime}) {
         //alert("Добавлен пользователь " + firstName + " " + secondName);
         handleClose();
         postRequest("http://localhost:3001/persons", firstName, secondName)
-            .then((r) => {setDbUpdateTime(Date.now());})
+            .then((r) => {
+                setDbUpdateTime(Date.now());
+            })
             .catch((error) => {
                 setError(error);
             });
@@ -44,38 +46,42 @@ function ModalAddPersonWindow({setDbUpdateTime}) {
     };
 
     return (
-        <Modal
-            trigger={<button className={styles.AddPersonButton} onClick={handleOpen}>Добавить сотрудника</button>}
-            open={modalOpen}
-            onClose={handleClose}
-        >
-            <div className={styles.ModalBackground}/>
-            <div className={styles.ModalWindowField}>
-                <h1>Создание сотрудника</h1>
+        <Grid container>
+            <Modal
+                trigger={<button className={styles.AddPersonButton} onClick={handleOpen}>Добавить сотрудника</button>}
+                open={modalOpen}
+                onClose={handleClose}
+            >
+                <div className={styles.ModalBackground}/>
+                <div className={styles.ModalWindowField}>
 
-                <Modal.Content>
-                    <div className={styles.ContentField}>
-                        <form className={styles.InputField} onSubmit={handleSubmit}>
-                            <a href="" className={styles.BackToMainLink} onClick={handleClose}>Назад к списку</a>
-                            <input name={"firstName"} value={firstName} onChange={onChangeFirstName}
-                                   className={styles.InputFistName} type="text"
-                                   placeholder="Введите имя сотрудника"/><br/>
-                            <input name={"secondName"} value={secondName} onChange={onChangeSecondName}
-                                   className={styles.InputSecondName} type="text"
-                                   placeholder="Введите фамилию сотрудника"/>
-                            <Grid container justify={"space-around"}>
-                                <Grid items>
-                                    <input type={"submit"} className={styles.SaveButton} value={"Сохранить"}/>
+                    <Grid container className={styles.header} justify={"flex-start"} alignItems={"center"}>
+                        <h1>Создание сотрудника</h1>
+                    </Grid>
+
+                    <Modal.Content>
+                        <div className={styles.ContentField}>
+                            <form className={styles.InputField} onSubmit={handleSubmit}>
+                                <input name={"firstName"} value={firstName} onChange={onChangeFirstName}
+                                       className={styles.InputFistName} type="text"
+                                       placeholder="Введите имя сотрудника"/><br/>
+                                <input name={"secondName"} value={secondName} onChange={onChangeSecondName}
+                                       className={styles.InputSecondName} type="text"
+                                       placeholder="Введите фамилию сотрудника"/>
+                                <Grid container justify={"space-around"}>
+                                    <Grid items>
+                                        <input type={"submit"} className={styles.SaveButton} value={"Сохранить"}/>
+                                    </Grid>
+                                    <Grid items>
+                                        <button className={styles.SaveButton} onClick={handleClose}>Отмена</button>
+                                    </Grid>
                                 </Grid>
-                                <Grid items>
-                                    <button className={styles.SaveButton} onClick={handleClose}>Отмена</button>
-                                </Grid>
-                            </Grid>
-                        </form>
-                    </div>
-                </Modal.Content>
-            </div>
-        </Modal>
+                            </form>
+                        </div>
+                    </Modal.Content>
+                </div>
+            </Modal>
+        </Grid>
     )
 }
 

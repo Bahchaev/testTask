@@ -29,21 +29,23 @@
 }
 
 .ContentField {
+    padding: 10px 0;
     background-color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border: 1px solid gray;
 }
 
-h1 {
+.header {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     background-color: gray;
     color: white;
-    height: 20px;
-    text-align: left;
+    height: 30px;
     padding-left: 10px;
-    vertical-align: center;
+}
+
+h1 {
     font-size: 15px;
     font-weight: normal;
     margin: 0;
@@ -58,8 +60,7 @@ h1 {
 .InputSecondName {
     width: 100%;
     height: 20px;
-    margin-bottom: 10px;
-    margin-right: 10px;
+    margin: 0 0 10px 0;
     border-radius: 5px;
     border: 1px solid gray;
 }
@@ -71,7 +72,6 @@ h1 {
 .SaveButton {
     cursor: pointer;
     margin-left: auto;
-    margin-bottom: 10px;
     display: block;
     text-align: center;
     background-color: dodgerblue;
@@ -85,15 +85,4 @@ h1 {
 
 .SaveButton:hover {
     background-color: deepskyblue;
-}
-
-.BackToMainLink {
-    display: block;
-    font-size: 12px;
-    margin-bottom: 10px;
-    margin-top: 5px
-}
-
-.ModalBackground {
-    width: 300%;
 }

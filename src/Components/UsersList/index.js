@@ -12,7 +12,9 @@ function UsersList({data, setDbUpdateTime}) {
     const [limit, setLimit] = useState(5);
 
     let lastPage = 1;
-    if (data.length !== 0) {lastPage = Math.ceil(data.length / limit);}
+    if (data.length !== 0) {
+        lastPage = Math.ceil(data.length / limit);
+    }
 
 
     function paginate(array, limit, page) {
@@ -41,7 +43,9 @@ function UsersList({data, setDbUpdateTime}) {
                 {usersMobile}
             </Hidden>
 
-            <PaginatorToolbar page={page} setPage={setPage} setLimit={setLimit} lastPage={lastPage}/>
+            <Grid container justify={"center"}>
+                <PaginatorToolbar page={page} setPage={setPage} setLimit={setLimit} lastPage={lastPage}/>
+            </Grid>
         </Grid>
     )
 }

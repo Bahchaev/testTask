@@ -1,3 +1,8 @@
+.text {
+    margin: 0 0 0 10px;
+    font-size: 20px;
+}
+
 .tableContent {
     border-bottom: 1px solid gray;
     min-height: 50px;

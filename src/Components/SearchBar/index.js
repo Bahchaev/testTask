@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import styles from "./styles.module.css"
 
 function SearchBar({searchData, setData}) {
     // searchData — исходные данные, которые будем фильтровать
@@ -19,7 +20,7 @@ function SearchBar({searchData, setData}) {
     };
 
     return (
-        <div>
+        <div className={styles.searchBar}>
             <input
                 value={term}
                 type={"search"}

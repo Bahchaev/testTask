@@ -18,12 +18,12 @@ function UsersDataDesktop({user, setDbUpdateTime}) {
             <Grid container
                   xs
                   alignItems="center" justify={{xs: "center", sm: "flex-start"}}>
-                <p id={user.id + "_firstName"}>{user.firstName}</p>
+                <p id={user.id + "_firstName"} className={styles.text}>{user.firstName}</p>
             </Grid>
             <Grid container
                   xs
                   alignItems="center" justify="flex-start">
-                <p id={user.id + "_secondName"}>{user.lastName}</p>
+                <p id={user.id + "_secondName"} className={styles.text}>{user.lastName}</p>
             </Grid>
             <Grid container
                   xs={2}

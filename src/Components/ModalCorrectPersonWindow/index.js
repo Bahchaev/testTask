@@ -24,12 +24,13 @@ function ModalCorrectPersonWindow({id, setDbUpdateTime}) {
     const handleClose = () => {
         // закрытие модального окна
         setModalOpen(false);
+        setDbUpdateTime(Date.now())
     };
     const handleSubmit = (event) => {
         //нажатие кнопки
         event.preventDefault();
         patchData(idPatch, firstName, secondName); //отправка данных на сервер
-        setDbUpdateTime(Date.now())
+
     };
     const onChangeFirstName = (event) => {
         // функция onChange для мгновенного измеения input.value
@@ -54,38 +55,41 @@ function ModalCorrectPersonWindow({id, setDbUpdateTime}) {
     }
 
     return (
-        <Modal trigger={<button className={styles.CorrectButton} id={id + "_button"} onClick={handleOpen}/>}
-               open={modalOpen}
-               onClose={handleClose}
-        >
-            <div className={styles.ModalBackground}/>
-            <div className={styles.ModalWindowField}>
-                <h1>Редактирование сотрудника</h1>
 
-                <Modal.Content>
-                    <div className={styles.ContentField}>
-                        <form className={styles.InputField} onSubmit={handleSubmit}>
-                            <a href="" className={styles.BackToMainLink} onClick={handleClose}>Назад к списку</a>
-                            <input name={"firstName"} value={firstName} onChange={onChangeFirstName}
-                                   className={styles.InputFistName} type="text"
-                                   placeholder="Введите имя сотрудника"/><br/>
-                            <input name={"secondName"} value={secondName} onChange={onChangeSecondName}
-                                   className={styles.InputSecondName} type="text"
-                                   placeholder="Введите фамилию сотрудника"/>
-                            <Grid container justify={"space-around"}>
-                                <Grid items>
-                                    <input type={"submit"} className={styles.SaveButton} value={"Сохранить"}/>
+            <Modal trigger={<button className={styles.CorrectButton} id={id + "_button"} onClick={handleOpen}/>}
+                   open={modalOpen}
+                   onClose={handleClose}
+            >
+                <div className={styles.ModalBackground}/>
+                <div className={styles.ModalWindowField}>
+                    <Grid container className={styles.header} justify={"flex-start"} alignItems={"center"}>
+                        <h1>Редактирование сотрудника</h1>
+                    </Grid>
+
+                    <Modal.Content>
+                        <div className={styles.ContentField}>
+                            <form className={styles.InputField} onSubmit={handleSubmit}>
+                                <input name={"firstName"} value={firstName} onChange={onChangeFirstName}
+                                       className={styles.InputFistName} type="text"
+                                       placeholder="Введите имя сотрудника"/><br/>
+                                <input name={"secondName"} value={secondName} onChange={onChangeSecondName}
+                                       className={styles.InputSecondName} type="text"
+                                       placeholder="Введите фамилию сотрудника"/>
+                                <Grid container justify={"space-around"}>
+                                    <Grid items>
+                                        <input type={"submit"} className={styles.SaveButton} value={"Сохранить"}/>
+                                    </Grid>
+                                    <Grid items>
+                                        <button className={styles.SaveButton} onClick={handleClose}>Отмена</button>
+                                    </Grid>
                                 </Grid>
-                                <Grid items>
-                                    <button className={styles.SaveButton} onClick={handleClose}>Отмена</button>
-                                </Grid>
-                            </Grid>
-                        </form>
-                    </div>
-                </Modal.Content>
-            </div>
-        </Modal>
-)
+                            </form>
+                        </div>
+                    </Modal.Content>
+                </div>
+            </Modal>
+
+    )
 }
 
 export default ModalCorrectPersonWindow

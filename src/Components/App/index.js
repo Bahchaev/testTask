@@ -46,20 +46,18 @@ function Index() {
         return <div>Загрузка...</div>
     } else {
         return (
-            <Grid container className={styles.pageContent}>
-
+            <Grid container className={styles.pageContainer}>
+                <Grid container justify={"flex-end"}>
+                    <SearchBar searchData={searchData} setData={setData}/>
+                </Grid>
                 <Grid container>
                     <UsersList data={data} setDbUpdateTime={setDbUpdateTime}/>
                 </Grid>
-                <Grid container className={styles.addPersonButtonContainer}>
+                <Grid container>
                     <ModalAddPersonWindow setDbUpdateTime={setDbUpdateTime}/>
                 </Grid>
-                <Grid container className={styles.buttonMarginTop}>
+                <Grid container>
                     <SortToolbar sortData={sortData} setData={setData}/>
-                </Grid>
-
-                <Grid container className={styles.buttonMarginTop}>
-                    <SearchBar searchData={searchData} setData={setData}/>
                 </Grid>
             </Grid>
         );

@@ -28,7 +28,7 @@ function PaginatorToolbar({page, setPage, setLimit, lastPage}) {
 
     return (
         <Grid container className={styles.paginatorToolbarContent}>
-            <Grid item xs={12} className={styles.pageSelectionToolbar}>
+            <Grid container xs={12} className={styles.pageSelectionToolbar} justify={"center"}>
                 <button onClick={handleFirstPage}>&lt;&lt;</button>
                 <button onClick={handleLeftPage}>&lt;</button>
                 <span className={styles.page}>страница {page} из {lastPage}</span>
@@ -36,7 +36,7 @@ function PaginatorToolbar({page, setPage, setLimit, lastPage}) {
                 <button onClick={handleLastPage}>&gt;&gt;</button>
             </Grid>
 
-            <Grid item xs={12} className={styles.pageLimitToolbar}>
+            <Grid container xs={12} className={styles.pageLimitToolbar} justify={"center"}>
             <span>Отображать по</span>
             <select onChange={handleLimit} className={styles.select}>
                 <option>5</option>
