@@ -9,10 +9,10 @@ import {Hidden} from "@material-ui/core";
 function UsersList({data, setDbUpdateTime}) {
 
     const [page, setPage] = useState(1);
-    const [limit, setLimit] = useState(5);
+    const [limit, setLimit] = useState(2);
 
     let lastPage = 1;
-    if (data.length !== 0) {
+    if (data.length !== 0 && limit.toString() !== "все") {
         lastPage = Math.ceil(data.length / limit);
     }
 
@@ -22,6 +22,9 @@ function UsersList({data, setDbUpdateTime}) {
     }
 
     let showData = paginate(data, limit, page);
+    if (limit.toString() === "все") {
+        showData = data
+    }
 
     const usersMobile = showData.map((user) => {
         return <UserDataMobile user={user} setDbUpdateTime={setDbUpdateTime}/>

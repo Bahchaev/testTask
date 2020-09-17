@@ -39,9 +39,9 @@ function PaginatorToolbar({page, setPage, setLimit, lastPage}) {
             <Grid container xs={12} className={styles.pageLimitToolbar} justify={"center"}>
             <span>Отображать по</span>
             <select onChange={handleLimit} className={styles.select}>
+                <option>2</option>
                 <option>5</option>
-                <option>10</option>
-                <option>20</option>
+                <option>все</option>
             </select>
             </Grid>
         </Grid>
