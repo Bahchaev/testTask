@@ -10,6 +10,7 @@ function ModalCorrectPersonWindow({id, setDbUpdateTime}) {
     const [firstName, setFirstName] = useState();   // Имя пользовател
     const [secondName, setSecondName] = useState("");   // Фамилия пользователя
     const [idPatch, setIdPatch] = useState();   //ID изменяемого объекта
+    const [error, setError] = useState(null); // ошибки при загрузке данных с сервера
 
 
     const handleOpen = (event) => {
@@ -24,7 +25,6 @@ function ModalCorrectPersonWindow({id, setDbUpdateTime}) {
     const handleClose = () => {
         // закрытие модального окна
         setModalOpen(false);
-        setDbUpdateTime(Date.now())
     };
     const handleSubmit = (event) => {
         //нажатие кнопки
@@ -51,10 +51,19 @@ function ModalCorrectPersonWindow({id, setDbUpdateTime}) {
         };
 
         patchRequest("http://localhost:3001/persons/" + id, data) // PATCH-запрос
-            .then(handleClose)
+            .then(() => {
+                handleClose();
+                setDbUpdateTime(Date.now())
+            })
+            .catch(() => {
+                document.location.reload(true);
+            })
     }
 
-    return (
+    if (error) {
+        return <div>{error.message}</div>;
+    } else {
+        return (
 
             <Modal trigger={<button className={styles.CorrectButton} id={id + "_button"} onClick={handleOpen}/>}
                    open={modalOpen}
@@ -89,7 +98,8 @@ function ModalCorrectPersonWindow({id, setDbUpdateTime}) {
                 </div>
             </Modal>
 
-    )
+        )
+    }
 }
 
 export default ModalCorrectPersonWindow

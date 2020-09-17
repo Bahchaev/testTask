@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import styles from "./styles.module.css"
 import {Modal} from 'semantic-ui-react'
 import Grid from "@material-ui/core/Grid";
@@ -27,11 +27,11 @@ function ModalAddPersonWindow({setDbUpdateTime}) {
         //alert("Добавлен пользователь " + firstName + " " + secondName);
         handleClose();
         postRequest("http://localhost:3001/persons", firstName, secondName)
-            .then((r) => {
+            .then(() => {
                 setDbUpdateTime(Date.now());
             })
-            .catch((error) => {
-                setError(error);
+            .catch(() => {
+                document.location.reload(true)
             });
     };
 
@@ -48,7 +48,8 @@ function ModalAddPersonWindow({setDbUpdateTime}) {
     return (
         <Grid container>
             <Modal
-                trigger={<button className={styles.AddPersonButton} onClick={handleOpen}>Добавить сотрудника</button>}
+                trigger={<button className={styles.AddPersonButton} onClick={handleOpen}>Добавить
+                    сотрудника</button>}
                 open={modalOpen}
                 onClose={handleClose}
             >
@@ -84,5 +85,4 @@ function ModalAddPersonWindow({setDbUpdateTime}) {
         </Grid>
     )
 }
-
 export default ModalAddPersonWindow

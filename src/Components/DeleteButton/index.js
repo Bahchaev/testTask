@@ -14,8 +14,8 @@ function DeleteButton({id, setDbUpdateTime}) {
                 response.json();
                 setDbUpdateTime(Date.now())
             })
-            .then((error) => {
-                    setError(error)
+            .catch(() => {
+                document.location.reload(true)
                 }
             )
     }
