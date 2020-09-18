@@ -1,8 +1,18 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from "./styles.module.css"
 import Grid from "@material-ui/core/Grid";
 
-function PaginatorToolbar({page, setPage, setLimit, lastPage}) {
+function PaginatorToolbar({page, setPage, setLimit, limit, data}) {
+
+
+    useEffect(() => {
+        setLimit(document.getElementById("PaginatorToolbarSelection").value);
+    },[]);
+
+    let lastPage = 1;
+    if (data.length !== 0 && limit.toString() !== "все") {
+        lastPage = Math.ceil(data.length / limit);
+    }
 
     const handleFirstPage = () => setPage(1);
     const handleLeftPage = () => {
@@ -28,7 +38,7 @@ function PaginatorToolbar({page, setPage, setLimit, lastPage}) {
 
     return (
         <Grid container className={styles.paginatorToolbarContent}>
-            <Grid container xs={12} className={styles.pageSelectionToolbar} justify={"center"}>
+            <Grid container item xs={12} className={styles.pageSelectionToolbar} justify={"center"}>
                 <button onClick={handleFirstPage}>&lt;&lt;</button>
                 <button onClick={handleLeftPage}>&lt;</button>
                 <span className={styles.page}>страница {page} из {lastPage}</span>
@@ -36,9 +46,9 @@ function PaginatorToolbar({page, setPage, setLimit, lastPage}) {
                 <button onClick={handleLastPage}>&gt;&gt;</button>
             </Grid>
 
-            <Grid container xs={12} className={styles.pageLimitToolbar} justify={"center"}>
+            <Grid container item xs={12} className={styles.pageLimitToolbar} justify={"center"}>
             <span>Отображать по</span>
-            <select onChange={handleLimit} className={styles.select}>
+            <select onChange={handleLimit} className={styles.select} id={"PaginatorToolbarSelection"}>
                 <option>2</option>
                 <option>5</option>
                 <option>все</option>

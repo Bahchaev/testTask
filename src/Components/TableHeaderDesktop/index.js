@@ -8,21 +8,21 @@ function TableHeaderDesktop() {
     return (
         <Grid container
               className={styles.tableHeader}>
-            <Grid container
+            <Grid container item
                   xs={1}
                   alignItems="center" justify="center">
             </Grid>
-            <Grid container
+            <Grid container item
                   xs
                   alignItems="center" justify="flex-start">
                 <p>Имя</p>
             </Grid>
-            <Grid container
+            <Grid container item
                   xs
                   alignItems="center" justify="flex-start">
                 <p>Фамилия</p>
             </Grid>
-            <Grid container
+            <Grid container item
                   xs={2}
                   alignItems="center" justify="flex-end">
             </Grid>

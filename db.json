@@ -1,11 +1,6 @@
 {
   "persons": [
     {
-      "firstName": "Борис",
-      "lastName": "Юшков",
-      "id": 21
-    },
-    {
       "firstName": "Вано",
       "lastName": "Эстов",
       "id": 27

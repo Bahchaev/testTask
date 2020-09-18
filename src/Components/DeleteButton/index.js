@@ -1,9 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from "./styles.module.css"
 
 function DeleteButton({id, setDbUpdateTime}) {
-
-    const [error, setError] = useState(null); // ошибки при загрузке данных с сервера
 
     // удаление данных с сервера
     function deleteData(item, url) {
@@ -15,7 +13,7 @@ function DeleteButton({id, setDbUpdateTime}) {
                 setDbUpdateTime(Date.now())
             })
             .catch(() => {
-                document.location.reload(true)
+                    document.location.reload(true)
                 }
             )
     }
@@ -27,19 +25,17 @@ function DeleteButton({id, setDbUpdateTime}) {
         let secondName = document.getElementById(id + "_secondName").textContent;
 
         if (window.confirm("Удалить пользователя " + firstName + " " + secondName + "?") === true) {
-            deleteData(id, "http://localhost:3001/persons");
+            deleteData(id, "http://localhost:3001/persons")
+                .catch(() => {
+                    document.location.reload(true);
+                })
         }
     }
 
     //отображение ошибки
-
-    if (error) {
-        return <div>{error.message}</div>;
-    } else {
-        return (
-            <button className={styles.DeleteButton} id={id + "_button"} onClick={buttonClick}/>
-        )
-    }
+    return (
+        <button className={styles.DeleteButton} id={id + "_button"} onClick={buttonClick}/>
+    )
 }
 
 export default DeleteButton

@@ -9,7 +9,6 @@ function ModalAddPersonWindow({setDbUpdateTime}) {
     const [modalOpen, setModalOpen] = useState(false); // статус модалоьного окна "закрыто/открыто"
     const [firstName, setFirstName] = useState(""); // Имя пользовател
     const [secondName, setSecondName] = useState(""); // Фамилия пользователя
-    const [error, setError] = useState(null); // ошибки при загрузке данных с сервера
 
     // открытие модального окна
     function handleOpen() {
@@ -56,7 +55,8 @@ function ModalAddPersonWindow({setDbUpdateTime}) {
                 <div className={styles.ModalBackground}/>
                 <div className={styles.ModalWindowField}>
 
-                    <Grid container className={styles.header} justify={"flex-start"} alignItems={"center"}>
+                    <Grid container className={styles.header}
+                          justify={"flex-start"} alignItems={"center"}>
                         <h1>Создание сотрудника</h1>
                     </Grid>
 
@@ -70,10 +70,10 @@ function ModalAddPersonWindow({setDbUpdateTime}) {
                                        className={styles.InputSecondName} type="text"
                                        placeholder="Введите фамилию сотрудника"/>
                                 <Grid container justify={"space-around"}>
-                                    <Grid items>
+                                    <Grid item>
                                         <input type={"submit"} className={styles.SaveButton} value={"Сохранить"}/>
                                     </Grid>
-                                    <Grid items>
+                                    <Grid item>
                                         <button className={styles.SaveButton} onClick={handleClose}>Отмена</button>
                                     </Grid>
                                 </Grid>
@@ -85,4 +85,5 @@ function ModalAddPersonWindow({setDbUpdateTime}) {
         </Grid>
     )
 }
+
 export default ModalAddPersonWindow

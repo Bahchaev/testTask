@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styles from "./styles.module.css"
+import Grid from "@material-ui/core/Grid";
 
 function SearchBar({searchData, setData}) {
     // searchData — исходные данные, которые будем фильтровать
@@ -20,14 +21,16 @@ function SearchBar({searchData, setData}) {
     };
 
     return (
-        <div className={styles.searchBar}>
-            <input
-                value={term}
-                type={"search"}
-                placeholder={"Поиск..."}
-                onChange={dataSearch}
-            />
-        </div>
+        <Grid container className={styles.searchBar} justify={"flex-end"}>
+            <Grid item>
+                <input
+                    value={term}
+                    type={"search"}
+                    placeholder={"Поиск..."}
+                    onChange={dataSearch}
+                />
+            </Grid>
+        </Grid>
     )
 }
 

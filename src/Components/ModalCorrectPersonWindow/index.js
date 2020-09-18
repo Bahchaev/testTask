@@ -10,7 +10,6 @@ function ModalCorrectPersonWindow({id, setDbUpdateTime}) {
     const [firstName, setFirstName] = useState();   // Имя пользовател
     const [secondName, setSecondName] = useState("");   // Фамилия пользователя
     const [idPatch, setIdPatch] = useState();   //ID изменяемого объекта
-    const [error, setError] = useState(null); // ошибки при загрузке данных с сервера
 
 
     const handleOpen = (event) => {
@@ -60,46 +59,42 @@ function ModalCorrectPersonWindow({id, setDbUpdateTime}) {
             })
     }
 
-    if (error) {
-        return <div>{error.message}</div>;
-    } else {
-        return (
+    return (
 
-            <Modal trigger={<button className={styles.CorrectButton} id={id + "_button"} onClick={handleOpen}/>}
-                   open={modalOpen}
-                   onClose={handleClose}
-            >
-                <div className={styles.ModalBackground}/>
-                <div className={styles.ModalWindowField}>
-                    <Grid container className={styles.header} justify={"flex-start"} alignItems={"center"}>
-                        <h1>Редактирование сотрудника</h1>
-                    </Grid>
+        <Modal trigger={<button className={styles.CorrectButton} id={id + "_button"} onClick={handleOpen}/>}
+               open={modalOpen}
+               onClose={handleClose}
+        >
+            <div className={styles.ModalBackground}/>
+            <div className={styles.ModalWindowField}>
+                <Grid container className={styles.header} justify={"flex-start"} alignItems={"center"}>
+                    <h1>Редактирование сотрудника</h1>
+                </Grid>
 
-                    <Modal.Content>
-                        <div className={styles.ContentField}>
-                            <form className={styles.InputField} onSubmit={handleSubmit}>
-                                <input name={"firstName"} value={firstName} onChange={onChangeFirstName}
-                                       className={styles.InputFistName} type="text"
-                                       placeholder="Введите имя сотрудника"/><br/>
-                                <input name={"secondName"} value={secondName} onChange={onChangeSecondName}
-                                       className={styles.InputSecondName} type="text"
-                                       placeholder="Введите фамилию сотрудника"/>
-                                <Grid container justify={"space-around"}>
-                                    <Grid items>
-                                        <input type={"submit"} className={styles.SaveButton} value={"Сохранить"}/>
-                                    </Grid>
-                                    <Grid items>
-                                        <button className={styles.SaveButton} onClick={handleClose}>Отмена</button>
-                                    </Grid>
+                <Modal.Content>
+                    <div className={styles.ContentField}>
+                        <form className={styles.InputField} onSubmit={handleSubmit}>
+                            <input name={"firstName"} value={firstName} onChange={onChangeFirstName}
+                                   className={styles.InputFistName} type="text"
+                                   placeholder="Введите имя сотрудника"/><br/>
+                            <input name={"secondName"} value={secondName} onChange={onChangeSecondName}
+                                   className={styles.InputSecondName} type="text"
+                                   placeholder="Введите фамилию сотрудника"/>
+                            <Grid container justify={"space-around"}>
+                                <Grid item>
+                                    <input type={"submit"} className={styles.SaveButton} value={"Сохранить"}/>
                                 </Grid>
-                            </form>
-                        </div>
-                    </Modal.Content>
-                </div>
-            </Modal>
+                                <Grid item>
+                                    <button className={styles.SaveButton} onClick={handleClose}>Отмена</button>
+                                </Grid>
+                            </Grid>
+                        </form>
+                    </div>
+                </Modal.Content>
+            </div>
+        </Modal>
 
-        )
-    }
+    )
 }
 
 export default ModalCorrectPersonWindow

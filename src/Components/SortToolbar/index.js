@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from "@material-ui/core/Grid";
-import styles from "./styles.module.css"
 
 function SortToolbar({sortData, setData}) {
 
@@ -20,14 +19,14 @@ function SortToolbar({sortData, setData}) {
     };
 
     return (
-        <Grid container className={styles.sortBarContainer} direction={"column"} justify={"space-between"}>
-            <Grid items>
+        <Grid container direction={"column"} justify={"space-between"}>
+            <Grid item>
                 <span>Cортировка:</span>
             </Grid>
-            <Grid items>
+            <Grid item>
                 <button onClick={() => sort('firstName')}>по имени</button>
             </Grid>
-            <Grid items>
+            <Grid item>
                 <button onClick={() => sort('lastName')}>по фамилии</button>
             </Grid>
         </Grid>

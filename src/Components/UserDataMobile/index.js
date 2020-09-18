@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import styles from "./styles.module.css"
 import DeleteButton from "../DeleteButton";
 import ModalCorrectPersonWindow from "../ModalCorrectPersonWindow";
@@ -13,31 +13,31 @@ function UserDataMobile({user, setDbUpdateTime}) {
         <Grid container
               className={styles.tableContent}>
 
-            <Grid container
+            <Grid container item
                   xs={3}
                   alignItems="center" justify="center">
                 <img src={avatar} alt={"avatar"} className={styles.image}/>
             </Grid>
 
-            <Grid container
+            <Grid container item
                   xs
                   direction={"column"}>
-                <Grid container
+                <Grid container item
                       xs
                       alignItems="center" justify="flex-start">
                     <p id={user.id + "_firstName"} className={styles.text}>{user.firstName}</p>
                 </Grid>
 
-                <Grid container
+                <Grid container item
                       xs
                       alignItems="center" justify="flex-start">
                     <p id={user.id + "_secondName"} className={styles.text}>{user.lastName}</p>
                 </Grid>
             </Grid>
-            <Grid container
+            <Grid container item
                   xs={1}
                   direction={"column"}
-                  alignItems="center" justify="space-around">
+                  alignItems="center" justify="center">
                 <ModalCorrectPersonWindow id={user.id + "_correct"} setDbUpdateTime={setDbUpdateTime}/>
                 <DeleteButton id={user.id + "_delete"} setDbUpdateTime={setDbUpdateTime}/>
             </Grid>
